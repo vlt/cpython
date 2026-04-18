@@ -464,6 +464,12 @@ class Random(_random.Random):
         the selections are made with equal probability.
 
         """
+        if not isinstance(population, _Sequence):
+            raise TypeError(
+                "Population must be a sequence. "
+                "For dicts or sets, use sorted(d)."
+            )
+
         random = self.random
         n = len(population)
         if cum_weights is None:
